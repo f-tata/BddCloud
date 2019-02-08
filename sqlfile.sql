@@ -1,4 +1,6 @@
---
+
+
+   --
 -- PostgreSQL database dump
 --
 
@@ -32,6 +34,18 @@ SET search_path = public, pg_catalog;
 SET default_tablespace = '';
 
 SET default_with_oids = false;
+
+
+
+
+CREATE DATABASE DataBaseTestTp
+   WITH OWNER myadmin 
+   TEMPLATE template0
+   ENCODING 'SQL_ASCII'
+   TABLESPACE  pg_default
+   LC_COLLATE  'C'
+   LC_CTYPE  'C'
+   CONNECTION LIMIT  -1;
 
 --
 -- Name: client; Type: TABLE; Schema: public; Owner: docker
