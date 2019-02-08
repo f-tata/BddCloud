@@ -38,7 +38,7 @@ SET default_with_oids = false;
 
 
 
-CREATE DATABASE DataBaseTestTp
+CREATE DATABASE docker
    WITH OWNER myadmin 
    TEMPLATE template0
    ENCODING 'SQL_ASCII'
