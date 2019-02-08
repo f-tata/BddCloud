@@ -15,28 +15,6 @@ COMMENT ON DATABASE "databaseTPDocker"
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 10.6 (Debian 10.6-1.pgdg90+1)
--- Dumped by pg_dump version 10.6 (Ubuntu 10.6-0ubuntu0.18.04.1)
-
--- Started on 2019-02-08 16:26:45 CET
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'SQL_ASCII';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET client_min_messages = warning;
-SET row_security = off;
-
---
--- TOC entry 2861 (class 0 OID 0)
--- Dependencies: 2860
--- Name: DATABASE "databaseTPDocker"; Type: COMMENT; Schema: -; Owner: postgres
---
-
-COMMENT ON DATABASE "databaseTPDocker" IS 'Création d''une base de données pour le test du tp docker postgres';
 
 
 --
@@ -94,48 +72,5 @@ ALTER TABLE public.commande OWNER TO postgres;
 -- Data for Name: client; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.client (id, nom, prenom, age) FROM stdin;
-1	TATA	Fella	24
-2	Ghada	CHTIOUI	23
-3	Rostom	VEGAPUNK	24
-4	Akram	METALAOUI	24
-\.
-
-
---
--- TOC entry 2854 (class 0 OID 20634)
--- Dependencies: 197
--- Data for Name: commande; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.commande (id, montant) FROM stdin;
-1	235
-2	2100
-\.
-
-
---
--- TOC entry 2729 (class 2606 OID 20633)
--- Name: client client_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.client
-    ADD CONSTRAINT client_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 2731 (class 2606 OID 20638)
--- Name: commande commande_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.commande
-    ADD CONSTRAINT commande_pkey PRIMARY KEY (id);
-
-
--- Completed on 2019-02-08 16:26:45 CET
-
---
--- PostgreSQL database dump complete
---
 
 
