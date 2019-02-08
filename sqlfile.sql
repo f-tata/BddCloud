@@ -38,8 +38,8 @@ SET default_with_oids = false;
 
 
 
-CREATE DATABASE docker
-   WITH OWNER myadmin 
+CREATE DATABASE DataBaseTestTp
+   WITH OWNER docker 
    TEMPLATE template0
    ENCODING 'SQL_ASCII'
    TABLESPACE  pg_default
