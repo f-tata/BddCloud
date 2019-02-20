@@ -1,124 +1,75 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.3
+-- https://www.phpmyadmin.net/
 --
--- PostgreSQL database dump
---
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  mer. 20 fév. 2019 à 12:14
+-- Version du serveur :  5.7.23
+-- Version de PHP :  7.2.10
 
--- Dumped from database version 10.6 (Debian 10.6-1.pgdg90+1)
--- Dumped by pg_dump version 10.6 (Ubuntu 10.6-0ubuntu0.18.04.1)
-
---
--- TOC entry 2860 (class 1262 OID 20601)
--- Name: databaseTPDocker; Type: DATABASE; Schema: -; Owner: postgres
---
-
-CREATE DATABASE "databaseTPDocker" WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'en_US.utf8' LC_CTYPE = 'en_US.utf8';
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
-ALTER DATABASE "databaseTPDocker" OWNER TO postgres;
-
-\connect "databaseTPDocker"
-
-
---
--- TOC entry 2861 (class 0 OID 0)
--- Dependencies: 2860
--- Name: DATABASE "databaseTPDocker"; Type: COMMENT; Schema: -; Owner: postgres
---
-
-COMMENT ON DATABASE "databaseTPDocker" IS 'Création d''une base de données pour le test du tp docker postgres';
-
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- TOC entry 1 (class 3079 OID 12980)
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+-- Base de données :  `dockerbd`
 --
+CREATE DATABASE IF NOT EXISTS `dockerbd` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+USE `dockerbd`;
 
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- TOC entry 2863 (class 0 OID 0)
--- Dependencies: 1
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
-
-SET default_tablespace = '';
-
-SET default_with_oids = false;
+-- --------------------------------------------------------
 
 --
--- TOC entry 197 (class 1259 OID 20640)
--- Name: client; Type: TABLE; Schema: public; Owner: postgres
+-- Structure de la table `client`
 --
 
-CREATE TABLE public.client (
-    id integer NOT NULL,
-    nom character varying(256),
-    prenom character varying(256),
-    age integer
-);
-
-
-ALTER TABLE public.client OWNER TO postgres;
-
---
--- TOC entry 196 (class 1259 OID 20635)
--- Name: commande; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.commande (
-    id integer NOT NULL,
-    montant integer
-);
-
-
-ALTER TABLE public.commande OWNER TO postgres;
+DROP TABLE IF EXISTS `client`;
+CREATE TABLE IF NOT EXISTS `client` (
+  `id` int(12) NOT NULL,
+  `nom` varchar(12) COLLATE utf8_bin NOT NULL,
+  `prenom` varchar(12) COLLATE utf8_bin NOT NULL,
+  `adresse` varchar(120) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- TOC entry 2854 (class 0 OID 20640)
--- Dependencies: 197
--- Data for Name: client; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Déchargement des données de la table `client`
 --
 
-INSERT INTO public.client (id, nom, prenom, age) VALUES (1, 'TATA', 'Fella', 24);
-INSERT INTO public.client (id, nom, prenom, age) VALUES (2, 'Ghada', 'CHTIOUI', 23);
-INSERT INTO public.client (id, nom, prenom, age) VALUES (3, 'Rostom', 'VEGAPUNK', 24);
-INSERT INTO public.client (id, nom, prenom, age) VALUES (4, 'Akram', 'METALAOUI', 24);
+INSERT INTO `client` (`id`, `nom`, `prenom`, `adresse`) VALUES
+(120, 'Berlin', 'Sophie', '9 rue de Montreuil'),
+(121, 'Bertier', 'Amadou', '38 rue Foch');
 
-
---
--- TOC entry 2853 (class 0 OID 20635)
--- Dependencies: 196
--- Data for Name: commande; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO public.commande (id, montant) VALUES (1, 235);
-INSERT INTO public.commande (id, montant) VALUES (2, 2100);
-
+-- --------------------------------------------------------
 
 --
--- TOC entry 2731 (class 2606 OID 20647)
--- Name: client client_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Structure de la table `commande`
 --
 
-ALTER TABLE ONLY public.client
-    ADD CONSTRAINT client_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 2729 (class 2606 OID 20639)
--- Name: commande commande_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.commande
-    ADD CONSTRAINT commande_pkey PRIMARY KEY (id);
-
-
--- Completed on 2019-02-08 18:28:01 CET
+DROP TABLE IF EXISTS `commande`;
+CREATE TABLE IF NOT EXISTS `commande` (
+  `num` int(12) NOT NULL,
+  `statut` varchar(120) COLLATE utf8_bin NOT NULL,
+  `description` varchar(120) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`num`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- PostgreSQL database dump complete
+-- Déchargement des données de la table `commande`
 --
 
+INSERT INTO `commande` (`num`, `statut`, `description`) VALUES
+(2390, 'Livré', '2,3 kg'),
+(9034, 'expédié', '4,9 kg');
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
